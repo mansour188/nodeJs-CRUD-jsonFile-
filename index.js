@@ -81,12 +81,11 @@ let afficher_meill_moin=(students,cb)=>{
   }
   cb(arr)
   
-
 }
 
 
 
-  
+ //api crud 
 
 
 app.post('/',(req,res)=>{
@@ -104,31 +103,14 @@ app.post('/',(req,res)=>{
     saveStudentData(students)
     res.send({success: true, msg: 'student saved successfully'})
   
-   
- 
-    
-  }))
-  
-  
-
-  
- 
-  
-
-
-
-})
+   }))
+  })
 
 app.get('/', (req, res) => {
    const accounts = getStudentsData()
-  
-  
   res.send(accounts)
-    
-    
-   
- 
   })
+  /*************************************** */
 
   app.put('/:numInsc', (req, res) => {
    const students = getStudentsData()
@@ -144,6 +126,7 @@ app.get('/', (req, res) => {
   }
  
   })
+  /********************************************* */
   app.delete('/:numInsc', (req, res) => {
     const students = getStudentsData()
    const numInsc =req.params.numInsc;
@@ -158,18 +141,16 @@ app.get('/', (req, res) => {
      
    }
   })
-
+//**************************** */
 
   app.get('/moyenne', (req, res) => {
     const students = getStudentsData()
     afficher_nom_moy(students,(response)=>{
     
       res.send(response);
-   
-    
-  
-  })
+   })
 })
+/***************************** */
 app.get('/afficher_Meilleure_moindre', (req, res) => {
   const students = getStudentsData()
  afficher_meill_moin(students,(arr)=>{
